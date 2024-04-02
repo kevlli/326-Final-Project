@@ -23,24 +23,24 @@
   },
   "contributors": [
     {
+      "name": "Kevin Li",
+      "email": "kevlli@umass.edu",
+      "username": "kevlli"
+    },
+    {
       "name": "Takuto Ban",
       "email": "tban@umass.edu",
       "username": "takb123"
     },
     {
-      "name": "",
-      "email": "",
-      "username": ""
+      "name": "Clara Butler",
+      "email": "cmbutler@umass.edu",
+      "username": "claraa2"
     },
     {
-      "name": "",
-      "email": "",
-      "username": ""
-    },
-    {
-      "name": "",
-      "email": "",
-      "username": ""
+      "name": "Aryan Pothanaboyina",
+      "email": "arpothanaboy@umass.edu",
+      "username": "aryan-pothanaboyina"
     }
   ],
   "scripts": {
