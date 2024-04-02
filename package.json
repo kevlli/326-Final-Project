@@ -1,0 +1,58 @@
+{
+  "name": "",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "license": "AGPL-version-3.0",
+  "private": false,
+  "engines": {
+    "node": ">= 14.0.0",
+    "npm": ">= 6.0.0"
+  },
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": "",
+  "keywords": [],
+  "author": {
+    "name": "Team Name (TODO)",
+    "url": "https://github.com/kevlli/326-Final-Project"
+  },
+  "contributors": [
+    {
+      "name": "Takuto Ban",
+      "email": "tban@umass.edu",
+      "username": "takb123"
+    },
+    {
+      "name": "",
+      "email": "",
+      "username": ""
+    },
+    {
+      "name": "",
+      "email": "",
+      "username": ""
+    },
+    {
+      "name": "",
+      "email": "",
+      "username": ""
+    }
+  ],
+  "scripts": {
+    "dev": "",
+    "test": "",
+    "milestone-01": "http-server src/docs/milestone-01 -p 3000 -c-1 -o -s",
+    "validate-html": "html-validate src/**/*.html",
+    "prettier": "prettier src --write"
+  },
+  "devDependencies": {
+    "html-validate": "^8.18.1",
+    "http-server": "^14.1.1",
+    "prettier": "^3.2.5"
+  }
+}
