@@ -1,7 +1,7 @@
 {
-  "name": "",
+  "name": "ecommute",
   "version": "1.0.0",
-  "description": "",
+  "description": "ECOmmute: Encouraging Sustainable Transportation",
   "main": "index.js",
   "type": "module",
   "license": "AGPL-version-3.0",
@@ -18,7 +18,7 @@
   "bugs": "",
   "keywords": [],
   "author": {
-    "name": "Team Name (TODO)",
+    "name": "ECOmmuters",
     "url": "https://github.com/kevlli/326-Final-Project"
   },
   "contributors": [
