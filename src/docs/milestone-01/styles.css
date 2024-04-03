@@ -29,6 +29,24 @@
   max-height: 150px;
 }
 
+#carbonButton {
+  margin-left: 20px;
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #23c929;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#wire-frames img {
+  margin-left: 20px;
+}
+
 .profile h3 {
   margin: 10px 0;
 }
@@ -73,6 +91,7 @@ h2 {
   height: auto;
   width: 50%;
   margin-left: 20px;
+  margin-bottom: 20px;
 }
 
 footer {
