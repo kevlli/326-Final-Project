@@ -81,3 +81,8 @@ footer {
   padding: 20px;
   text-align: center;
 }
+
+#carbon {
+  all: unset;
+  font-size: 130%;
+}
