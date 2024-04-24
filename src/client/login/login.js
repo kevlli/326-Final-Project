@@ -9,7 +9,7 @@ loginForm.addEventListener("submit", function (event) {
   // send data for authentication, to be implemented
   console.log("Login submitted:", { username, password });
   container.innerHTML = `Successfully Logged In! 
-        <a href="../home/home.html">Home</a>`;
+        <a href="../index.html">Home</a>`;
 });
 
 signupForm.addEventListener("submit", function (event) {
