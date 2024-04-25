@@ -4,6 +4,13 @@ let emissions = [
   { user: "kevin", emissions: 60, date: "Wed Apr 24 2024 22:21:00" },
 ];
 
+/**
+ * Mock function that mimicks logging emissions into database
+ * @example
+ * // logEmissions()
+ * Adds emissions to database with user info, emissions, and date
+ * @returns {Promise} Returns a promise that fulfills if able to add to database
+ */
 async function logEmissions() {
   return new Promise((resolve, reject) => {
     setTimeout(
@@ -23,14 +30,21 @@ async function logEmissions() {
           date: dateParsed,
         });
         resolve("Successfully logged");
-        renderTasks();
+        renderEmissions();
       },
       Math.random() * 2000 + 1000
     );
   });
 }
 
-async function renderTasks() {
+/**
+ * Mock function that mimicks rendering the emissions for a user
+ * @example
+ * // renderEmissions()
+ * Extracts the emissions for that user from the database and displays them
+ * @returns {Promise} Returns a promise that fulfills if able to render
+ */
+async function renderEmissions() {
   return new Promise((resolve, reject) => {
     setTimeout(
       () => {
@@ -60,4 +74,4 @@ async function renderTasks() {
 
 // Initial rendering
 document.getElementById("log").addEventListener("click", logEmissions);
-renderTasks();
+renderEmissions();
