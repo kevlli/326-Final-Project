@@ -1,0 +1,92 @@
+h1 {
+    font-size:xx-large;
+    text-align: center;
+    background-color: #333;
+    color: white;
+
+    
+  }
+
+  body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #dceed1;
+  }
+
+  /* Styling for the "Learn More" section */
+#learn-more {
+  width: calc(33.33% - 20px); /* Adjust as needed */
+  float: left;
+  margin-right: 20px;
+  background-color:darkslategrey;
+  color:rgb(255, 255, 255);
+  border-radius: 8px;
+  margin-left: 20px;
+
+}
+
+
+#learn-more h2 {
+  text-align: center;
+}
+
+#learn-more ul {
+  list-style-type: none;
+  padding: 0;
+  margin-right: 10px;
+  margin-left: 10px;
+  
+}
+
+#learn-more ul li {
+  margin-bottom: 10px; /* Example margin for spacing between list items */
+}
+
+#learn-more ul li a {
+  text-decoration: none;
+  color: rgb(165, 208, 246); /* Example color for links */
+}
+
+#learn-more ul li a:hover {
+  text-decoration: underline; /* Example hover effect for links */
+}
+
+#alternative-transportation {
+  width: calc(60% - 40px); /* Adjust as needed */
+  float: left;
+  color: beige;
+  background-color: darkslategrey; /* Example background color */
+  padding: 20px; /* Example padding for content spacing */
+  border-radius: 8px; /* Example border radius for rounded corners */
+  margin-top: 20px; /* Add margin to the top */
+  margin-right: 20px; /* Add margin to the right */
+}
+
+#alternative-transportation h2 {
+  text-align: center;
+}
+
+
+#alternative-transportation ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+  font-size: larger;
+  margin-right: 10px;
+  margin-left: 10px;
+  
+}
+
+#alternative-transportation ul li {
+  margin-bottom: 10px; /* Example margin for spacing between list items */
+}
+
+#alternative-transportation li a {
+  text-decoration: none;
+  text-align: center;
+  color:rgb(165, 208, 246); /* Example color for links */
+}
+
+#alternative-transportation ul li a:hover {
+  text-decoration: underline; /* Example hover effect for links */
+}
