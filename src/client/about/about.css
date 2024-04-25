@@ -9,6 +9,7 @@
     width: 50%;
     margin: auto;
     align-items: center;
+    background-color: rgb(217, 246, 255);
 }
 
 .name {
@@ -32,4 +33,7 @@ h1 {
 }
 .team {
     align-items: center;
+}
+body {
+    background-color: rgb(228, 254, 228);
 }
