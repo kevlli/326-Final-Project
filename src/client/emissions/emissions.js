@@ -32,7 +32,7 @@ async function logEmissions() {
         resolve("Successfully logged");
         renderEmissions();
       },
-      Math.random() * 2000 + 1000
+      Math.random() * 1000 + 500
     );
   });
 }
@@ -67,11 +67,11 @@ async function renderEmissions() {
                 `;
         emissionsList.appendChild(taskElement);
       },
-      Math.random() * 2000 + 1000
+      Math.random() * 1000 + 500
     );
   });
 }
 
 // Initial rendering
-document.getElementById("log").addEventListener("click", logEmissions);
-renderEmissions();
+document.getElementById("log").addEventListener("click", await logEmissions);
+await renderEmissions();

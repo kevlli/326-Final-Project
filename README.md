@@ -46,7 +46,7 @@ npm run milestone-02
     │   ├── emissions    ... Emissions Page
     │   ├── home         ... Home Page
     │   ├── login        ... Login Page
-    │   └── travel       ... Travel Page
+    │   └── leaderboard  ... Leaderboard Page
     │   ├── resources    ... Resources Page
     │   ├── imgs         ... Images
     └── docs/milestone-01
