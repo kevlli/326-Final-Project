@@ -1,0 +1,34 @@
+.profile img {
+    display: block;
+    margin: 0 auto 10px;
+    border-radius: 8px;
+    max-height: 150px;
+}
+.profile-container {
+    position: relative;
+    width: 50%;
+    align-items: center;
+}
+
+.name {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 20px;
+    padding: 16px 32px;
+    text-align: center;
+}
+
+.profile {
+    border-color: rgba(7, 162, 246, 0.835);
+    border-width: 1cm;
+    border-style: solid;
+}
+
+h1 { 
+    text-align: center;
+    color: rgb(9, 59, 9);
+    text-shadow: 6px 6px 6px green;
+}
+.team {
+    align-items: center;
+}
