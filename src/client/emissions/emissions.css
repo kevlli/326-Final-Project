@@ -1,3 +1,22 @@
+nav {
+  background-color: #333;
+  padding: 10px 0;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+}
+
+nav a:hover {
+  background-color: #555;
+}
+
 body {
   font-family: Arial, sans-serif;
   background-color: #dceed1;

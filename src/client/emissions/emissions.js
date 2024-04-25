@@ -32,21 +32,29 @@ async function logEmissions() {
 
 async function renderTasks() {
   return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const emissionsList = document.getElementById("emissionsList");
-      emissionsList.innerHTML = "";
-      emissions.forEach(
-        (task) => {
+    setTimeout(
+      () => {
+        let sum = 0;
+        const emissionsList = document.getElementById("emissionsList");
+        emissionsList.innerHTML = "";
+        emissions.forEach((task) => {
+          sum += task.emissions;
           const taskElement = document.createElement("li");
           taskElement.innerHTML = `
                     <span>${task.emissions} grams of CO2</span>
                     <span>${task.date}</span>
                 `;
           emissionsList.appendChild(taskElement);
-        },
-        Math.random() * 2000 + 1000
-      );
-    });
+        });
+        const taskElement = document.createElement("li");
+        taskElement.innerHTML = `
+                    <span><b>Total Emissions</b></span>
+                    <span>${sum} grams of CO2</span>
+                `;
+        emissionsList.appendChild(taskElement);
+      },
+      Math.random() * 2000 + 1000
+    );
   });
 }
 
