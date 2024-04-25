@@ -12,8 +12,48 @@ restoreState();
 render();
 
 function render() {
-  if (localStorage.getItem("loggedIn") !== null)
-    container.innerHTML = `Successfully Logged In! Press logo to proceed.`;
+  if (localStorage.getItem("loggedIn") !== null) {
+    container.innerHTML = `Successfully Logged In! Press logo to proceed. <button id="logout">Log Out</button>`;
+    document.getElementById("logout").addEventListener("click", logout);
+  }
+}
+
+function logout() {
+  localStorage.removeItem("loggedIn");
+  container.innerHTML = `<div class="form-container">
+  <form id="loginForm" class="input-form">
+    <h2>Login</h2>
+    <input
+      type="text"
+      id="loginUsername"
+      placeholder="Username"
+      required
+    />
+    <input
+      type="password"
+      id="loginPassword"
+      placeholder="Password"
+      required
+    />
+    <button type="submit">Login</button>
+  </form>
+  <form id="signupForm" class="input-form">
+    <h2>Sign Up</h2>
+    <input
+      type="text"
+      id="signupUsername"
+      placeholder="Username"
+      required
+    />
+    <input
+      type="password"
+      id="signupPassword"
+      placeholder="Password"
+      required
+    />
+    <button type="submit">Sign Up</button>
+  </form>
+</div>`;
 }
 
 function saveState() {
@@ -90,6 +130,7 @@ loginForm.addEventListener("submit", async function (event) {
       alert(result);
       container.innerHTML = `Successfully Logged In! Press logo to proceed.`;
       localStorage.setItem("loggedIn", "true");
+      render();
     },
     (error) => {
       alert(error);

@@ -60,7 +60,7 @@ body {
   border-radius: 4px;
 }
 
-.input-form button {
+button {
   width: 100%;
   padding: 10px;
   background-color: #a18276;
@@ -70,7 +70,7 @@ body {
   cursor: pointer;
 }
 
-.input-form button:hover {
+button:hover {
   background-color: #6d5951;
 }
 
