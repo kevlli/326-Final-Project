@@ -1,30 +1,26 @@
 h1 {
-    font-size:xx-large;
-    text-align: center;
-    background-color: #333;
-    color: white;
+  font-size: xx-large;
+  text-align: center;
+  background-color: #333;
+  color: white;
+}
 
-    
-  }
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background-color: #dceed1;
+}
 
-  body {
-    font-family: sans-serif;
-    margin: 0;
-    background-color: #dceed1;
-  }
-
-  /* Styling for the "Learn More" section */
+/* Styling for the "Learn More" section */
 #learn-more {
   width: calc(33.33% - 20px); /* Adjust as needed */
   float: left;
   margin-right: 20px;
-  background-color:darkslategrey;
-  color:rgb(255, 255, 255);
+  background-color: darkslategrey;
+  color: rgb(255, 255, 255);
   border-radius: 8px;
   margin-left: 20px;
-
 }
-
 
 #learn-more h2 {
   text-align: center;
@@ -35,7 +31,6 @@ h1 {
   padding: 0;
   margin-right: 10px;
   margin-left: 10px;
-  
 }
 
 #learn-more ul li {
@@ -66,7 +61,6 @@ h1 {
   text-align: center;
 }
 
-
 #alternative-transportation ul {
   list-style-type: none;
   padding: 0;
@@ -74,7 +68,6 @@ h1 {
   font-size: larger;
   margin-right: 10px;
   margin-left: 10px;
-  
 }
 
 #alternative-transportation ul li {
@@ -84,9 +77,38 @@ h1 {
 #alternative-transportation li a {
   text-decoration: none;
   text-align: center;
-  color:rgb(165, 208, 246); /* Example color for links */
+  color: rgb(165, 208, 246); /* Example color for links */
 }
 
 #alternative-transportation ul li a:hover {
   text-decoration: underline; /* Example hover effect for links */
+}
+
+nav {
+  background-color: #333;
+  padding: 10px 0;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+}
+
+nav a:hover {
+  background-color: #555;
+}
+
+body {
+  padding: 10%;
+  font-family: Arial, sans-serif;
+  background-color: #dceed1;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
