@@ -1,59 +1,41 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login / Sign Up</title>
-    <link rel="stylesheet" href="login.css" />
-    <script type="module" src="login.js" defer></script>
-  </head>
-  <nav id="navbar">
-    <a href="/home/home.html">Home</a>
-    <a href="/emissions/emissions.html">Emissions Tracker</a>
-    <a href="/leaderboard/leaderboard.html">Leaderboard</a>
-    <a href="/resources/resources.html">Resources</a>
-    <a href="/about/about.html">About Us</a>
-    <a href="/login/login.html">Login</a>
-  </nav>
-  <body>
-    <a href="/emissions/emissions.html" id="home">
-      <img id="logo" src="../imgs/logo.png" />
-    </a>
-    <div class="container" id="container">
-      <div class="form-container">
-        <form id="loginForm" class="input-form">
-          <h2>Login</h2>
-          <input
-            type="text"
-            id="loginUsername"
-            placeholder="Username"
-            required
-          />
-          <input
-            type="password"
-            id="loginPassword"
-            placeholder="Password"
-            required
-          />
-          <button type="submit">Login</button>
-        </form>
-        <form id="signupForm" class="input-form">
-          <h2>Sign Up</h2>
-          <input
-            type="text"
-            id="signupUsername"
-            placeholder="Username"
-            required
-          />
-          <input
-            type="password"
-            id="signupPassword"
-            placeholder="Password"
-            required
-          />
-          <button type="submit">Sign Up</button>
-        </form>
-      </div>
+<body>
+  <a href="/emissions/emissions.html" id="home">
+    <img id="logo" src="../imgs/logo.png" height="300px"/>
+  </a>
+  <div class="container" id="container">
+    <div class="form-container">
+      <form id="loginForm" class="input-form">
+        <h2>Login</h2>
+        <input
+          type="text"
+          id="loginUsername"
+          placeholder="Username"
+          required
+        />
+        <input
+          type="password"
+          id="loginPassword"
+          placeholder="Password"
+          required
+        />
+        <button type="submit">Login</button>
+      </form>
+      <form id="signupForm" class="input-form">
+        <h2>Sign Up</h2>
+        <input
+          type="text"
+          id="signupUsername"
+          placeholder="Username"
+          required
+        />
+        <input
+          type="password"
+          id="signupPassword"
+          placeholder="Password"
+          required
+        />
+        <button type="submit">Sign Up</button>
+      </form>
     </div>
-  </body>
-</html>
+  </div>
+</body>

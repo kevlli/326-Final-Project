@@ -1,0 +1,277 @@
+nav {
+    background-color: #333;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+  
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+}
+  
+nav a:hover {
+    background-color: #555;
+}
+  
+body {
+    padding: 10%;
+    font-family: Arial, sans-serif;
+    background-color: #dceed1;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main.home .container {
+    width: 500px;
+    padding: 20px;
+    background-color: #aac0aa;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+  
+main.home .box {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 3%;
+}
+
+main.home div.title {
+    font-size: 50px;
+    font-weight: 1000;
+}
+
+main.home div.subtitle {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+main.home a {
+    color: black;
+}
+
+main.emissions .container {
+    width: 500px;
+    padding: 20px;
+    background-color: #aac0aa;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+main.emissions h1 {
+    text-align: center;
+}
+
+main.emissions .emissions-form {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+main.emissions .emissions-form input, select {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+main.emissions #mode {
+    width: 20%;
+    margin-left: 4%;
+}
+
+main.emissions .emissions-form button {
+    padding: 8px 16px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #a18276;
+    color: #fff;
+}
+
+main.emissions .emissions-form button:hover {
+    background-color: #6d5951;
+}
+
+main.emissions ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+main.emissions li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+main.emissions .completed {
+    text-decoration: line-through;
+    color: #777;
+}
+
+main.about div.profile {
+    margin: 30px;
+    padding: 25px;
+    background-color: #aac0aa;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+}
+
+main.about img {
+    width: 20vw;
+    min-width: 20vw;
+    margin-right: 20px;
+}
+
+main.resources h1 {
+    font-size: xx-large;
+    text-align: center;
+    background-color: #333;
+    color: white;
+  }
+  
+main.resources  body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #dceed1;
+  }
+  
+  /* Styling for the "Learn More" section */
+main.resources  #learn-more {
+    width: calc(33.33% - 20px); /* Adjust as needed */
+    float: left;
+    margin-right: 20px;
+    background-color: darkslategrey;
+    color: rgb(255, 255, 255);
+    border-radius: 8px;
+    margin-left: 20px;
+  }
+  
+main.resources  #learn-more h2 {
+    text-align: center;
+  }
+  
+main.resources  #learn-more ul {
+    list-style-type: none;
+    padding: 0;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+  
+main.resources  #learn-more ul li {
+    margin-bottom: 10px; /* Example margin for spacing between list items */
+  }
+  
+main.resources  #learn-more ul li a {
+    text-decoration: none;
+    color: rgb(165, 208, 246); /* Example color for links */
+  }
+  
+main.resources  #learn-more ul li a:hover {
+    text-decoration: underline; /* Example hover effect for links */
+  }
+  
+main.resources  #alternative-transportation {
+    width: calc(60% - 40px); /* Adjust as needed */
+    float: left;
+    color: beige;
+    background-color: darkslategrey; /* Example background color */
+    padding: 20px; /* Example padding for content spacing */
+    border-radius: 8px; /* Example border radius for rounded corners */
+    margin-top: 20px; /* Add margin to the top */
+    margin-right: 20px; /* Add margin to the right */
+  }
+  
+main.resources  #alternative-transportation h2 {
+    text-align: center;
+  }
+  
+main.resources  #alternative-transportation ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+    font-size: larger;
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+  
+main.resources  #alternative-transportation ul li {
+    margin-bottom: 10px; /* Example margin for spacing between list items */
+  }
+  
+main.resources  #alternative-transportation li a {
+    text-decoration: none;
+    text-align: center;
+    color: rgb(165, 208, 246); /* Example color for links */
+  }
+  
+main.resources  #alternative-transportation ul li a:hover {
+    text-decoration: underline; /* Example hover effect for links */
+  }
+  
+main.resources  nav {
+    background-color: #333;
+    padding: 10px 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+  
+main.resources  nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+  }
+  
+main.resources  nav a:hover {
+    background-color: #555;
+  }
+  
+main.resources  body {
+    padding: 10%;
+    font-family: Arial, sans-serif;
+    background-color: #dceed1;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+main.leaderboard  .container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #aac0aa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+main.leaderboard  h1 {
+    text-align: center;
+  }
+  
+main.leaderboard  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+main.leaderboard  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+main.leaderboard  th {
+    background-color: #a18276;
+    border-radius: 10px;
+  }
