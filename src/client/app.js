@@ -13,7 +13,7 @@ export class App {
     async render(view) {
         if (view === this.#currentView) return;
 
-        const response = await fetch(`${view}/${view}.html`);
+        const response = await fetch(`pages/${view}.html`);
         const text = await response.text();
         this.#root.innerHTML = text;
         this.#currentView = view;
@@ -76,9 +76,6 @@ async function setupLeaderboard() {
         leaderboardBody.innerHTML += row;
     });
 }
-
-const loginBtn = document.getElementById("login-btn");
-const logoutBtn = document.getElementById("logout-btn");
 
 async function setupLogin(app) {
     const loginForm = document.getElementById("loginForm");
