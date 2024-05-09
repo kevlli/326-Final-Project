@@ -42,12 +42,18 @@ npm run milestone-02
 ├── package.json
 └── src
     ├── client
-    │   ├── about        ... About Page
-    │   ├── emissions    ... Emissions Page
-    │   ├── home         ... Home Page
-    │   ├── login        ... Login Page
-    │   └── leaderboard  ... Leaderboard Page
-    │   ├── resources    ... Resources Page
-    │   ├── imgs         ... Images
-    └── docs/milestone-01
+    │   ├── app.js                 ... Rendering Script
+    │   ├── db.js                  ... PouchDB Requests
+    │   ├── index.html             ... Base Page
+    │   ├── styles.css             ... Formatting
+    │   ├── index.js               ... Initial Script
+    │   ├── pages                  ... Various Pages
+    │   │   ├── about.html
+    │   │   ├── emissions.html
+    │   │   ├── home.html
+    │   │   ├── leaderboard.html
+    │   │   ├── login.html
+    │   │   └── resources.html
+    │   └── imgs                   ... Images
+    └── docs/milestone-01          ... Documentation
 ```
