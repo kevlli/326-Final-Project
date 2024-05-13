@@ -73,21 +73,6 @@ async function loadUserEmissions(response, user) {
   }
 }
 
-async function loadEmissions(response) {
-  try {
-    const data = await db.loadAllEmissions();
-    response.writeHead(200, headerFields);
-    response.write(JSON.stringify(data));
-    response.end();
-  } catch (err) {
-    response.writeHead(500, headerFields);
-    response.write("<h1>Internal Server Error</h1>");
-    response.write("<p>Unable to load all emissions</p>");
-    response.write(`<p>This is likely a connectivity issue!</p>`);
-    response.end();
-  }
-}
-
 async function getLeaderboard(response) {
   try {
     const data = await db.loadAllEmissions();
@@ -105,9 +90,9 @@ async function getLeaderboard(response) {
     response.end();
   } catch (err) {
     response.writeHead(500, headerFields);
-    response.write("<h1>Internal Server Error</h1>");
-    response.write("<p>Unable to load all emissions</p>");
-    response.write(`<p>This is likely a connectivity issue!</p>`);
+    response.write("Internal Server Error");
+    response.write("Unable to load all emissions");
+    response.write(`This is likely a connectivity issue!`);
     response.end();
   }
 }

@@ -109,13 +109,10 @@ export async function checkUserExists(username) {
 export async function verifyLogin(username, password) {
   try {
     const data = await db.get("users");
-    if (
-      data.users.some((x) => x.username === username && x.password === password)
-    )
-      return true;
-    return false;
+    return data.users.some(
+      (x) => x.username === username && x.password === password
+    );
   } catch (e) {
-    await db.put({ _id: "users", users: [{ username, password }] });
     return false;
   }
 }
