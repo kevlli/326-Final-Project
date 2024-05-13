@@ -3,19 +3,19 @@
  *
  * This module provides a comprehensive suite of functionalities for managing
  * ECOmmute data via HTTP requests. It leverages a set of core operations
- * including login, signup, tracking emissions, and getting leaderboard. These 
- * operations are exposed through a basic HTTP server setup that routes incoming 
+ * including login, signup, tracking emissions, and getting leaderboard. These
+ * operations are exposed through a basic HTTP server setup that routes incoming
  * requests to the appropriate action based on the URL path and query parameters.
  *
  * Core Functionalities:
- * - `signup(response, username, password)` : Create new account with a username 
- *  and associated password. If username or password is not provided, it responds 
+ * - `signup(response, username, password)` : Create new account with a username
+ *  and associated password. If username or password is not provided, it responds
  *  with a 400 status code indicating a bad request.
  * - `login(response, username, password)` : Reads the user's username and password
  *  and successfully logs in if password matches username. If the username or password
  *  is not found, it responds with a 401 status code.
- * - `trackEmissions(response, username, distance, transport)` : Creates entry for 'Total 
- *  Emissions' tracker. 
+ * - `trackEmissions(response, username, distance, transport)` : Creates entry for 'Total
+ *  Emissions' tracker.
  * - `getLeaderboard(response)` : Gets the emissions leaderboard from the database.
  *
  * Usage: This module is designed to be deployed as part of a Node.js server
@@ -24,15 +24,161 @@
  * with HTTP interfaces.
  */
 
-// Import ExpressJS 
+// Import ExpressJS
 import express from "express";
 import logger from "morgan";
 import * as db from "./db.js";
 
-const headerFields = { "Content-Type": "text/html" };
+const headerFields = { "Content-Type": "application/json" };
 
+async function logEmission(response, user, amount) {
+  if (user === undefined || amount === undefined) {
+    response.writeHead(400, headerFields);
+    response.write("Username and Amount Required");
+    response.end();
+  } else {
+    try {
+      await db.logEmission(user, amount, new Date().toLocaleString());
+      response.writeHead(200, headerFields);
+      response.write(`Emission for ${user} successfully logged`);
+      response.end();
+    } catch (err) {
+      response.writeHead(500, headerFields);
+      response.write("Internal Server Error");
+      response.write("Unable to log emission");
+      response.write(`This is likely a connectivity issue!`);
+      response.end();
+    }
+  }
+}
 
+async function loadEmissions(response) {
+  try {
+    const data = await db.loadAllEmissions();
+    response.writeHead(200, headerFields);
+    response.write(JSON.stringify(data));
+    response.end();
+  } catch (err) {
+    response.writeHead(500, headerFields);
+    response.write("<h1>Internal Server Error</h1>");
+    response.write("<p>Unable to load all emissions</p>");
+    response.write(`<p>This is likely a connectivity issue!</p>`);
+    response.end();
+  }
+}
 
+async function getLeaderboard(response) {
+  try {
+    const data = await db.loadAllEmissions();
+    let cumulative = {};
+    data.forEach((x) => {
+      if (x.name in cumulative) cumulative[x.name] += x.amount;
+      else cumulative[x.name] = x.amount;
+    });
+    cumulative = Object.entries(cumulative);
+    const sorted = cumulative.sort(function compareScores(a, b) {
+      return a[1] < b[1] ? -1 : b[1] < a[1] ? 1 : 0;
+    });
+    response.writeHead(200, headerFields);
+    response.write(JSON.stringify(sorted));
+    response.end();
+  } catch (err) {
+    response.writeHead(500, headerFields);
+    response.write("<h1>Internal Server Error</h1>");
+    response.write("<p>Unable to load all emissions</p>");
+    response.write(`<p>This is likely a connectivity issue!</p>`);
+    response.end();
+  }
+}
+
+async function register(response, username, password) {
+  if (username === undefined || password === undefined) {
+    response.writeHead(400, headerFields);
+    response.write("Username and Password Required");
+    response.end();
+  } else {
+    try {
+      const result = await db.checkUserExists(username);
+      if (result) throw new error();
+      const success = await db.createUser(username, password);
+      response.writeHead(200, headerFields);
+      response.write("Successfully registered");
+      response.end();
+    } catch (err) {
+      response.writeHead(500, headerFields);
+      response.write(`Username already taken`);
+      response.end();
+    }
+  }
+}
+
+async function deleteUser(response, username, password) {
+  if (username === undefined || password === undefined) {
+    response.writeHead(400, headerFields);
+    response.write("Username and Password Required");
+    response.end();
+  } else {
+    try {
+      const result = await db.verifyLogin(username, password);
+      if (!result) throw new error();
+      const res = await db.deleteUser(username, password);
+      response.writeHead(200, headerFields);
+      response.write(`Successfully deleted ${username}`);
+      response.end();
+    } catch (err) {
+      response.writeHead(500, headerFields);
+      response.write(`Username or password incorrect, deletion denied`);
+      response.end();
+    }
+  }
+}
+
+async function changePassword(response, username, oldPassword, newPassword) {
+  if (
+    username === undefined ||
+    oldPassword === undefined ||
+    newPassword === undefined
+  ) {
+    response.writeHead(400, headerFields);
+    response.write("Username and Passwords Required");
+    response.end();
+  } else {
+    try {
+      const result = await db.verifyLogin(username, oldPassword);
+      if (!result) throw new error();
+      const res = await db.changePassword(username, newPassword);
+      response.writeHead(200, headerFields);
+      response.write(`Successfully changed password of ${username}`);
+      response.end();
+    } catch (err) {
+      response.writeHead(500, headerFields);
+      response.write(
+        `Username or password incorrect, change of password denied`
+      );
+      response.end();
+    }
+  }
+}
+
+async function login(response, username, password) {
+  if (username === undefined || password === undefined) {
+    response.writeHead(400, headerFields);
+    response.write("Username and Password Required");
+    response.end();
+  } else {
+    try {
+      const result = await db.verifyLogin(username, password);
+      if (!result) throw new error();
+      response.writeHead(200, headerFields);
+      response.write("Successfully logged in");
+      response.end();
+    } catch (err) {
+      response.writeHead(500, headerFields);
+      response.write(`Username or password incorrect`);
+      response.end();
+    }
+  }
+}
 /**
  * Asynchronously handles HTTP requests for various ECOmmute operations based on
  * the request URL. The function parses the query parameters from the
@@ -41,15 +187,15 @@ const headerFields = { "Content-Type": "text/html" };
  * based on the URL's path.
  *
  * The server responds differently depending on the path:
- * 
- * - `/signup` : Create new account with a username and associated password. If 
- *  username or password is not provided, it responds  with a 400 status code 
+ *
+ * - `/signup` : Create new account with a username and associated password. If
+ *  username or password is not provided, it responds  with a 400 status code
  *  indicating a bad request.
  * - `/login` : Reads the user's username and password
  *  and successfully logs in if password matches username. If the username or password
  *  is not found, it responds with a 401 status code.
- * - `/trackEmissions` : Creates entry for 'Total 
- *  Emissions' tracker. 
+ * - `/trackEmissions` : Creates entry for 'Total
+ *  Emissions' tracker.
  * - `/getLeaderboard` : Gets the emissions leaderboard from the database.
  */
 
@@ -66,16 +212,23 @@ app.use(express.static("src/client"));
 // If the HTTP method is not explicitly defined for a matching route,
 // respond with a 405 status code.
 const MethodNotAllowedHandler = async (request, response) => {
-  response.status(405).type('text/plain').send('Method Not Allowed');
+  response.status(405).type("text/plain").send("Method Not Allowed");
 };
 
 // Handle the request routes
-// add delete route
 app
   .route("/signup")
   .post(async (request, response) => {
     const options = request.query;
-    //signup(response, username, password);
+    register(response, options.user, options.pass);
+  })
+  .delete(async (request, response) => {
+    const options = request.query;
+    deleteUser(response, options.user, options.pass);
+  })
+  .put(async (request, response) => {
+    const options = request.query;
+    changePassword(response, options.user, options.oldpass, options.newpass);
   })
   .all(MethodNotAllowedHandler);
 
@@ -83,15 +236,19 @@ app
   .route("/login")
   .get(async (request, response) => {
     const options = request.query;
-    //login(response, username, password);
+    login(response, options.user, options.pass);
   })
   .all(MethodNotAllowedHandler);
 
 app
   .route("/trackEmissions")
-  .put(async (request, response) => {
+  .post(async (request, response) => {
     const options = request.query;
-    //trackEmissions(response, username, distance, transport);
+    logEmission(response, options.user, parseInt(options.amount));
+  })
+  .get(async (request, response) => {
+    const options = request.query;
+    loadEmissions(response);
   })
   .all(MethodNotAllowedHandler);
 
@@ -99,10 +256,9 @@ app
   .route("/getLeaderboard")
   .get(async (request, response) => {
     const options = request.query;
-    //getLeaderboard(response);
+    getLeaderboard(response);
   })
   .all(MethodNotAllowedHandler);
-
 
 // default not found route
 app.route("*").all(async (request, response) => {
