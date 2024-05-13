@@ -52,6 +52,27 @@ async function logEmission(response, user, amount) {
   }
 }
 
+async function loadUserEmissions(response, user) {
+  if (user === undefined) {
+    response.writeHead(400, headerFields);
+    response.write("Username Required");
+    response.end();
+  } else {
+    try {
+      const data = await db.loadUserEmissions(user);
+      response.writeHead(200, headerFields);
+      response.write(JSON.stringify(data));
+      response.end();
+    } catch (err) {
+      response.writeHead(500, headerFields);
+      response.write("Internal Server Error");
+      response.write("Unable to log emission");
+      response.write(`This is likely a connectivity issue!`);
+      response.end();
+    }
+  }
+}
+
 async function loadEmissions(response) {
   try {
     const data = await db.loadAllEmissions();
@@ -248,7 +269,7 @@ app
   })
   .get(async (request, response) => {
     const options = request.query;
-    loadEmissions(response);
+    loadUserEmissions(response, options.user);
   })
   .all(MethodNotAllowedHandler);
 

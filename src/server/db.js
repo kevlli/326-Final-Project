@@ -45,6 +45,15 @@ export async function logEmission(name, amount, date) {
   }
 }
 
+export async function loadUserEmissions(name) {
+  try {
+    const data = await db.get("emissions");
+    return data.emissions.filter((x) => x.name === name);
+  } catch (e) {
+    return [];
+  }
+}
+
 export async function loadAllEmissions() {
   try {
     const data = await db.get("emissions");
