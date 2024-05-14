@@ -6,7 +6,7 @@ Current Progress
 
 - Milestone 1 (`src/docs/milestone-01`): Overview of Project
 - Milestone 2 (`src/client`): Frontend
-- Milestone 3 (`src/server/server.js`): Backend
+- Milestone 3 (`src/server`): Backend
 
 ## Setup
 
@@ -37,7 +37,7 @@ npm run milestone-02
 5. Run project (Milestone 3)
 
 ```
-npm run milestone-03
+npm start
 ```
 
 ## Project Structure
@@ -50,12 +50,12 @@ npm run milestone-03
 └── src
     ├── client
     │   ├── app.js                 ... Rendering Script
-    │   ├── db.js                  ... PouchDB Requests
     │   ├── index.html             ... Base Page
     │   ├── styles.css             ... Formatting
     │   ├── index.js               ... Initial Script
     │   ├── pages                  ... Various Pages
     │   │   ├── about.html
+    │   │   ├── account.html
     │   │   ├── emissions.html
     │   │   ├── home.html
     │   │   ├── leaderboard.html
@@ -63,7 +63,28 @@ npm run milestone-03
     │   │   └── resources.html
     │   └── imgs                   ... Images
     └── docs/milestone-01          ... Documentation
-    ├── server 
+    ├── server
         ├── db.js                  ... ECOmmute DB Management
-        ├── server.js              ... ECOmmute HTTP Server
+        ├── server.js              ... ECOmmute Express Server
+```
+
+## API routes
+
+```
+/signup                 ... Route for account functionality
+├── POST : Given a username and password, registers a new account
+├── DELETE : Given a username and password, deletes the account
+└── PUT : Given a username, password, and newPassword, changes password
+
+/login                  ... Route for login functionality
+└── GET: Given a username and password, logs in if correct details
+
+/trackEmissions         ... Route for logging emissions
+├── POST: Given a username and number, logs the number for that user
+└── GET: Given a username, loads all the emissions / logs for that user
+
+/getLeaderboard         ... Route for leaderboard functionality
+└── GET: Loads all stored emissions / logs, sorts them for leaderboard
+
+
 ```
