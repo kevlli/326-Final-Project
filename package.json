@@ -48,7 +48,7 @@
     "test": "",
     "milestone-01": "http-server src/docs/milestone-01 -p 3000 -c-1 -o -s",
     "milestone-02": "http-server src/client -p 3000 -c-1 -o -s",
-    "milestone-03": "node src/server/server.js",
+    "start": "node src/server/server.js",
     "validate-html": "html-validate src/**/*.html",
     "prettier": "prettier src --write"
   },
@@ -63,6 +63,5 @@
     "express": "^4.19.2",
     "http-server": "^14.1.1",
     "morgan": "^1.10.0"
-
   }
 }
