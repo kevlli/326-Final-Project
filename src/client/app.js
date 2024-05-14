@@ -27,6 +27,7 @@ export class App {
     if (view === "emissions") await setupEmissions();
     else if (view === "leaderboard") await setupLeaderboard();
     else if (view === "login") await setupLogin(this);
+    else if (view === "account") await setupAccount(this);
   }
 }
 
@@ -38,7 +39,7 @@ async function setupEmissions() {
 
     const username = localStorage.getItem("user");
     const emissions = await fetch(
-      `http://localhost:3260/trackEmissions?user=${username}`
+      `/trackEmissions?user=${username}`
     ).then((response) => response.json());
     console.log(emissions);
     emissions.forEach((task) => {
@@ -67,7 +68,7 @@ async function setupEmissions() {
       alert("Please enter a number");
     } else {
       await fetch(
-        `http://localhost:3260/trackEmissions?user=${username}&amount=${distance * (multipliers[mode] ?? 440)}`,
+        `/trackEmissions?user=${username}&amount=${distance * (multipliers[mode] ?? 440)}`,
         {
           method: "POST",
         }
@@ -83,7 +84,7 @@ async function setupLeaderboard() {
   const leaderboardBody = document.querySelector("#leaderboard tbody");
   leaderboardBody.innerHTML = "";
 
-  const sortedUsers = await fetch(`http://localhost:3260/getLeaderboard`).then(
+  const sortedUsers = await fetch(`/getLeaderboard`).then(
     (response) => response.json()
   );
   let rank = 1;
@@ -106,7 +107,7 @@ async function setupLogin(app) {
     const username = loginUsername.value;
     const password = loginPassword.value;
     const response = await fetch(
-      `http://localhost:3260/login?user=${username}&pass=${password}`
+      `/login?user=${username}&pass=${password}`
     );
     if (response.status !== 200) {
       alert("Wrong Username or Password");
@@ -122,7 +123,7 @@ async function setupLogin(app) {
     const username = signupUsername.value;
     const password = signupPassword.value;
     const response = await fetch(
-      `http://localhost:3260/signup?user=${username}&pass=${password}`,
+      `/signup?user=${username}&pass=${password}`,
       {
         method: "POST",
       }
@@ -135,5 +136,64 @@ async function setupLogin(app) {
       updateAuth();
       await app.render("home");
     }
+  });
+}
+
+async function setupAccount(app) {
+  const nameTitle = document.getElementById("name-title");
+  nameTitle.innerText = `Welcome ${localStorage.getItem("user")}!`;
+
+  const changeForm = document.getElementById("changeForm");
+  const oldPassInput = document.getElementById("oldpass");
+  const newPassInput = document.getElementById("newpass");
+
+  changeForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+    const oldPass = oldPassInput.value;
+    const newPass = newPassInput.value;
+    const response = await fetch(
+      `/signup?user=${localStorage.getItem("user")}&oldpass=${oldPass}&newpass=${newPass}`,
+      {
+        method: "PUT",
+      }
+    );
+    if (response.status === 200) {
+      alert("Successfully changed password");
+    }
+    else {
+      alert(await response.text());
+    }
+  });
+
+  const deleteForm = document.getElementById("deleteForm");
+  const deletePass = document.getElementById("deletePass");
+
+  deleteForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+    const username = localStorage.getItem("user");
+    const password = deletePass.value;
+    const response = await fetch(
+      `/signup?user=${username}&pass=${password}`,
+      {
+        method: "DELETE",
+      }
+    )
+    if (response.status === 200) {
+      alert("Successfully deleted account");
+      localStorage.removeItem("user");
+      updateAuth();
+      await app.render("login");
+    }
+    else {
+      alert(await response.text());
+    }
+  });
+
+  const logoutBtn = document.getElementById("logout-btn");
+
+  logoutBtn.addEventListener("click", async () => {
+    localStorage.removeItem("user");
+    updateAuth();
+    await app.render("login");
   });
 }

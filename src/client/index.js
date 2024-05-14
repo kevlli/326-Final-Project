@@ -9,14 +9,7 @@ document.querySelectorAll("nav a").forEach((link) => {
     link.addEventListener("click", async function (e) {
         e.preventDefault();
         const viewName = this.getAttribute("href").substring(1);
-        if (viewName === "") {  // if logout
-            localStorage.removeItem("user");
-            updateAuth();
-            await app.render("login");
-        }
-        else {
-            await app.render(viewName);
-        }
+        await app.render(viewName);
     });
 });
 
@@ -34,15 +27,15 @@ const initialView = window.location.hash
 await app.render(initialView);
 
 const loginBtn = document.getElementById("login-btn");
-const logoutBtn = document.getElementById("logout-btn");
+const acctBtn = document.getElementById("acct-btn");
 
 function updateAuth() {
     if (localStorage.getItem("user") === null) {
         loginBtn.style.display = "inline";
-        logoutBtn.style.display = "none";
+        acctBtn.style.display = "none";
     }
     else {
-        logoutBtn.style.display = "inline";
+        acctBtn.style.display = "inline";
         loginBtn.style.display = "none";
     }
 }
