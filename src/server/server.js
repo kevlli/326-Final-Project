@@ -31,6 +31,15 @@ import * as db from "./db.js";
 
 const headerFields = { "Content-Type": "application/json" };
 
+/**
+ * Asynchronously writes the users emissions to the database.
+ * 
+ * @param {object} response - HTTP response.
+ * @param {string} user - The user of the emission. If not
+ * provided, the function will respond with an error message.
+ * @param {string} amount - The amount of emissions logged. If not
+ * provided, the function will respond with an error message.
+ */
 async function logEmission(response, user, amount) {
   if (user === undefined || amount === undefined) {
     response.writeHead(400, headerFields);
@@ -52,6 +61,13 @@ async function logEmission(response, user, amount) {
   }
 }
 
+/**
+ * Asynchronously gets the user's emissions from the database.
+ * 
+ * @param {object} response - HTTP response.
+ * @param {string} user - The user of the emission. If not
+ * provided, the function will respond with an error message.
+ */
 async function loadUserEmissions(response, user) {
   if (user === undefined) {
     response.writeHead(400, headerFields);
@@ -73,6 +89,12 @@ async function loadUserEmissions(response, user) {
   }
 }
 
+/**
+ * Asynchronously gets the emissions leaderboard from the database and sorts
+ * them in ascending order based on emissions amount.
+ * 
+ * @param {object} response - HTTP response. 
+ */
 async function getLeaderboard(response) {
   try {
     const data = await db.loadAllEmissions();
@@ -97,6 +119,15 @@ async function getLeaderboard(response) {
   }
 }
 
+/**
+ * Asynchronously creates a new user in the database.
+ * 
+ * @param {object} response - HTTP response.
+ * @param {string} username - The username of the user. If not
+ * provided, the function will respond with an error message.
+ * @param {string} password - The password of the user. If not
+ * provided, the function will respond with an error message.
+ */
 async function register(response, username, password) {
   if (username === undefined || password === undefined) {
     response.writeHead(400, headerFields);
@@ -118,6 +149,15 @@ async function register(response, username, password) {
   }
 }
 
+/**
+ * Asynchronously deletes an existing user from the database.
+ * 
+ * @param {object} response - HTTP response.
+ * @param {string} username - The username of the user. If not
+ * provided, the function will respond with an error message.
+ * @param {string} password - The password of the user. If not
+ * provided, the function will respond with an error message.
+ */
 async function deleteUser(response, username, password) {
   if (username === undefined || password === undefined) {
     response.writeHead(400, headerFields);
@@ -139,6 +179,17 @@ async function deleteUser(response, username, password) {
   }
 }
 
+/**
+ * Asynchronously updates the password of an existing user in the database.
+ * 
+ * @param {object} response - HTTP response.
+ * @param {string} username - The username of the user. If not
+ * provided, the function will respond with an error message.
+ * @param {string} oldPassword - The current password of the user. If not
+ * provided, the function will respond with an error message.
+ * @param {string} newPassword - The new password of the user. If not
+ * provided, the function will respond with an error message.
+ */
 async function changePassword(response, username, oldPassword, newPassword) {
   if (
     username === undefined ||
@@ -166,6 +217,14 @@ async function changePassword(response, username, oldPassword, newPassword) {
   }
 }
 
+/**
+ * Asynchronously verifies that username and password are in the database.
+ * @param {object} response - HTTP response.
+ * @param {string} username - The username of the user. If not
+ * provided, the function will respond with an error message.
+ * @param {string} password - The password of the user. If not
+ * provided, the function will respond with an error message.
+ */
 async function login(response, username, password) {
   if (username === undefined || password === undefined) {
     response.writeHead(400, headerFields);

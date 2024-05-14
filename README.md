@@ -6,6 +6,7 @@ Current Progress
 
 - Milestone 1 (`src/docs/milestone-01`): Overview of Project
 - Milestone 2 (`src/client`): Frontend
+- Milestone 3 (`src/server/server.js`): Backend
 
 ## Setup
 
@@ -33,6 +34,12 @@ npm run milestone-01
 npm run milestone-02
 ```
 
+5. Run project (Milestone 3)
+
+```
+npm run milestone-03
+```
+
 ## Project Structure
 
 ```
@@ -56,4 +63,7 @@ npm run milestone-02
     │   │   └── resources.html
     │   └── imgs                   ... Images
     └── docs/milestone-01          ... Documentation
+    ├── server 
+        ├── db.js                  ... ECOmmute DB Management
+        ├── server.js              ... ECOmmute HTTP Server
 ```
